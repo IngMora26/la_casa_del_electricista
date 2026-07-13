@@ -1,13 +1,28 @@
 // main.js – JavaScript de la página
 // Funcionalidad básica: menú hamburguesa, scroll suave y envío de formulario
 
-// Toggle del menú en móviles
+// Toggle del menú en móviles (con estado accesible)
 const toggleBtn = document.querySelector('.header__toggle');
 const nav = document.querySelector('.header__nav');
 if (toggleBtn && nav) {
   toggleBtn.addEventListener('click', () => {
-    nav.classList.toggle('nav--open');
+    const isOpen = nav.classList.toggle('nav--open');
+    toggleBtn.setAttribute('aria-expanded', String(isOpen));
   });
+
+  // Cerrar el menú al hacer clic en un link (mejor UX en mobile)
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('nav--open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+// Año dinámico en el footer
+const yearEl = document.getElementById('year');
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
 }
 
 // Scroll suave para enlaces de anclaje
@@ -27,6 +42,13 @@ const form = document.querySelector('.contact__form');
 if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if (form.action.includes('YOUR_FORM_ID')) {
+      alert('El formulario aún no está conectado a un servicio de envío real. Contacta al desarrollador para completar la configuración, o escríbenos directamente por WhatsApp.');
+      console.warn('Formspree action todavía usa el placeholder YOUR_FORM_ID. Reemplázalo por el ID real.');
+      return;
+    }
+
     const data = new FormData(form);
     try {
       const response = await fetch(form.action, {

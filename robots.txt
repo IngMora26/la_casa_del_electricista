@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://la-casa-del-electricista-cyan.vercel.app/sitemap.xml

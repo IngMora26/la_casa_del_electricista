@@ -1,27 +1,29 @@
 /* css/styles.css */
 :root {
-  /* Color palette from DESIGN.md */
-  --color-primary: #785900;
-  /* Electric Gold */
-  --color-primary-container: #ffc107;
-  --color-primary-fixed: #ffdf9e;
-  --color-primary-fixed-dim: #fabd00;
-  --color-secondary: #515f78;
-  /* Deep Navy */
-  --color-secondary-container: #d2e0fe;
-  --color-surface: #f7f9fb;
-  --color-surface-variant: #e0e3e5;
-  --color-background: #f7f9fb;
+  /* Paleta real de marca (extraída del logo del local: rojo + blanco) */
+  --color-primary: #b80000;
+  /* Rojo de marca */
+  --color-primary-container: #b80000;
+  --color-primary-fixed: #8f0000;
+  /* Rojo oscuro (hover) */
+  --color-primary-fixed-dim: #d64545;
+  /* Rojo claro (acentos secundarios) */
+  --color-secondary: #1a1a1a;
+  --color-secondary-container: #f3e3e3;
+  --color-surface: #faf7f7;
+  --color-surface-variant: #efefef;
+  --color-background: #ffffff;
   --color-on-primary: #ffffff;
-  --color-on-primary-container: #6d5100;
+  --color-on-primary-container: #ffd9d9;
   --color-on-secondary: #ffffff;
-  --color-on-surface: #191c1e;
-  --color-on-surface-variant: #4f4632;
+  --color-on-surface: #1a1a1a;
+  --color-on-surface-variant: #4a4a4a;
   --color-success: #66ff8e;
   /* Success Green */
   --color-error: #ba1a1a;
-  --color-outline: #827660;
-  --color-outline-variant: #d4c5ab;
+  --color-outline: #c7a6a6;
+  --color-outline-variant: #ead9d9;
+  --color-on-secondary-container: #1a1a1a;
   --radius-sm: 0.25rem;
   --radius-lg: 0.5rem;
   --radius-full: 9999px;
@@ -55,6 +57,51 @@ body {
   line-height: 1.6;
 }
 
+/* Skip link (accessibility) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1001;
+  background: var(--color-primary);
+  color: #fff;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+}
+
+.skip-link:focus {
+  left: var(--spacing-md);
+  top: var(--spacing-md);
+}
+
+/* Pending-content state (galería sin fotos reales aún) */
+.gallery-pending {
+  text-align: center;
+  background: var(--color-surface);
+  border: 1px dashed var(--color-outline-variant);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  color: var(--color-on-surface-variant);
+}
+
+.gallery-pending p {
+  margin-bottom: var(--spacing-md);
+}
+
+.contact__intro {
+  text-align: center;
+  color: var(--color-on-surface-variant);
+  margin-bottom: var(--spacing-md);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map {
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
 /* BEM helpers */
 .header {
   position: relative;
@@ -62,7 +109,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-lg);
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(4px);
   border-bottom: 1px solid var(--color-outline-variant);
@@ -74,34 +121,36 @@ body {
 }
 
 .header__logo img {
-  height: 40px;
+  height: 32px;
   width: auto;
   margin-right: var(--spacing-sm);
 }
 
 .header__nav {
   display: flex;
-  gap: var(--spacing-lg);
+  align-items: center;
+  gap: var(--spacing-md);
   position: relative;
   z-index: 20;
 }
 
 .header__nav a {
   display: inline-block;
-  padding: var(--spacing-sm) var(--spacing-md);
-  color: var(--color-on-primary);
-  background: var(--color-primary);
+  padding: var(--spacing-sm) var(--spacing-sm);
+  color: var(--color-on-surface);
+  background: transparent;
   border-radius: var(--radius-sm);
-  margin-right: var(--spacing-sm);
+  margin-right: 0;
   text-decoration: none;
+  font-size: 0.9rem;
   font-weight: 600;
-  transition: background .2s, color .2s;
+  transition: color .2s;
 }
 
 .header__nav a:hover,
 .header__nav a:focus-visible {
-  background: var(--color-primary-container);
-  color: var(--color-on-primary-container);
+  color: var(--color-primary);
+  background: transparent;
 }
 
 /* Mobile hamburger */
@@ -134,8 +183,14 @@ body {
   /* Mobile nav links overriding some desktop styles */
   .header__nav a {
     display: block;
+    color: var(--color-on-primary);
     margin-right: 0;
     margin-bottom: var(--spacing-sm);
+  }
+
+  .header__nav a:hover,
+  .header__nav a:focus-visible {
+    color: var(--color-on-primary-container);
   }
 
   .header__toggle {
@@ -173,18 +228,16 @@ body {
 .hero__title {
   font-family: var(--font-primary);
   font-size: 2.5rem;
-  color: var(--color-primary);
+  color: #ffffff;
   margin-bottom: var(--spacing-sm);
-  filter: brightness(1.8);
-  mix-blend-mode: screen;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .hero__subtitle {
   font-size: 1.25rem;
-  color: #fff;
+  color: #ffffff;
   margin-bottom: var(--spacing-md);
-  filter: brightness(1.8);
-  mix-blend-mode: screen;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
 }
 
 .hero__cta {
@@ -205,7 +258,7 @@ body {
 
 .btn--primary {
   background: var(--color-primary-container);
-  color: var(--color-on-primary-fixed-variant);
+  color: #ffffff;
 }
 
 .btn--primary:hover {
@@ -318,9 +371,16 @@ body {
 }
 
 /* Testimonials */
+.testimonials__source {
+  text-align: center;
+  color: var(--color-on-surface-variant);
+  margin-bottom: var(--spacing-md);
+  font-size: 0.9rem;
+}
+
 .testimonials {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--spacing-md);
 }
 
@@ -329,17 +389,42 @@ body {
   padding: var(--spacing-md);
   border-radius: var(--radius-lg);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial__stars {
+  color: var(--color-primary-fixed-dim);
+  margin-bottom: var(--spacing-sm);
 }
 
 .testimonial__text {
   font-style: italic;
   color: var(--color-on-surface-variant);
   margin-bottom: var(--spacing-sm);
+  flex-grow: 1;
 }
 
 .testimonial__author {
   font-weight: 600;
   color: var(--color-primary);
+}
+
+.testimonial__badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  background: var(--color-secondary-container);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  margin-left: var(--spacing-sm);
+  vertical-align: middle;
+}
+
+.testimonials__cta {
+  text-align: center;
+  margin-top: var(--spacing-lg);
 }
 
 /* Location */

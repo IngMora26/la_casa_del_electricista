@@ -13,18 +13,18 @@ colors:
   on-surface-variant: '#4f4632'
   inverse-surface: '#2d3133'
   inverse-on-surface: '#eff1f3'
-  outline: '#827660'
-  outline-variant: '#d4c5ab'
-  surface-tint: '#785900'
-  primary: '#785900'
+  outline: '#c7a6a6'
+  outline-variant: '#ead9d9'
+  surface-tint: '#b80000'
+  primary: '#b80000'
   on-primary: '#ffffff'
-  primary-container: '#ffc107'
-  on-primary-container: '#6d5100'
-  inverse-primary: '#fabd00'
-  secondary: '#515f78'
+  primary-container: '#b80000'
+  on-primary-container: '#ffd9d9'
+  inverse-primary: '#d64545'
+  secondary: '#1a1a1a'
   on-secondary: '#ffffff'
-  secondary-container: '#d2e0fe'
-  on-secondary-container: '#55637d'
+  secondary-container: '#f3e3e3'
+  on-secondary-container: '#1a1a1a'
   tertiary: '#006d2f'
   on-tertiary: '#ffffff'
   tertiary-container: '#43e777'
@@ -117,12 +117,12 @@ The visual style is **Corporate Modern with a Warm Tactile edge**. It prioritize
 
 ## Colors
 
-The palette is built on a high-contrast foundation to ensure legibility and brand recognition.
+La paleta se basa en los colores reales de la marca, extraídos del logo del local: rojo y blanco, con alto contraste para asegurar legibilidad.
 
-- **Primary (Electric Gold):** Used for calls to action, highlights, and primary brand markers. It signifies energy and attention. A slightly warmer gold (#FFC107) is preferred over pure yellow to ensure better contrast against white backgrounds.
-- **Secondary (Deep Navy):** Used for typography, headers, and structural elements. It provides the "weight" of trust and professionalism.
-- **Accent (Success Green):** Specifically reserved for WhatsApp integration and positive status indicators, leveraging the familiar color of the platform to drive local engagement.
-- **Surface & Background:** A clean, multi-layered system using pure white for primary content cards and a very light cool-gray for the base background to reduce eye strain.
+- **Primary (Rojo de marca):** Usado para llamadas a la acción, títulos y elementos destacados. Es el color real del logo y letrero del local (`#B80000`). Contraste de 6.9:1 sobre blanco — cumple WCAG AA con margen.
+- **Secondary (Casi negro):** Usado para el texto principal del cuerpo. Se evita el rojo puro en bloques largos de texto por legibilidad.
+- **Accent (Verde WhatsApp):** Reservado específicamente para la integración de WhatsApp, aprovechando el color reconocible de la plataforma.
+- **Surface & Background:** Blanco puro y un gris cálido muy claro para tarjetas, reduciendo la fatiga visual sin alejarse de la identidad roja.
 
 ## Typography
 
